@@ -68,4 +68,13 @@ Quit the server with CONTROL-C.
 
 8. Copy and paste the local development server URL in your browser.
 
+9. The last and yet important thing that deserves a mention is that, you should create a `.env` file in the root of your directory. If you don't, youll encounter some issues.
+
+The `.env` file content should be as follows:
+
+```
+SECRET_KEY="any_kind_of_random_values_that_suit_your_preference"
+
+```
+
 ## Congratulations, you are good to go! :smiley: :rocket:
