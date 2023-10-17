@@ -14,9 +14,6 @@ WORKDIR /app
 COPY . /app
 
 # Update package lists and install system dependencies
-# RUN apt update && apt install -y \
-#     libpango1.0-0 \
-#     libcairo2
 RUN apt install python3-pip python3-cffi python3-brotli libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0
 
 # Upgrade pip and install Python packages from requirements.txt
