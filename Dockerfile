@@ -13,11 +13,11 @@ WORKDIR /app
 # Copy the application code into the container
 COPY . /app
 
-# Install system dependencies (make sure these are compatible with the Python version)
-RUN apt-get update && apt-get install -y \
-    libpango1.0-0 \
-    libcairo2 \
-    libffi6
+# Update package lists and install system dependencies
+# RUN apt update && apt install -y \
+#     libpango1.0-0 \
+#     libcairo2
+RUN apt install python3-pip python3-cffi python3-brotli libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0
 
 # Upgrade pip and install Python packages from requirements.txt
 RUN pip install --upgrade pip
