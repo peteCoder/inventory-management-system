@@ -1,6 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# exit on error
+set -o errexit
 
-# Build the Docker image using the Dockerfile
-DOCKER_BUILDKIT=1 docker build
+apt-get update && apt-get install -y \
+    libpango1.0-0 \
+    libcairo2 \
+    libffi6
+
 pip install -r requirements.txt
 
+python manage.py runserver
