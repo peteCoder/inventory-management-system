@@ -14,8 +14,8 @@ WORKDIR /app
 COPY . /app
 
 # Update package lists and install system dependencies
-RUN apt update 
-RUN apt install -y libpango-1.0-0 libcairo2
+RUN apt-get update 
+# RUN apt-get install -y libpango-1.0-0 libcairo2
 
 # Upgrade pip and install Python packages from requirements.txt
 RUN pip install --upgrade pip
