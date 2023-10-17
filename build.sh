@@ -8,5 +8,3 @@ apt-get update && apt-get install -y \
     libffi6
 
 pip install -r requirements.txt
-
-python manage.py runserver
