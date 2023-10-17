@@ -6,8 +6,16 @@ FROM python:3.11.1
 # Set up an app directory for your code
 COPY . /app
 WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libpango1.0-0 \
+    libcairo2 \
+    libffi6
+
+
 # Install `pip` and needed Python packages from `requirements.txt`
-RUN apt-get update
+
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
