@@ -15,7 +15,7 @@ COPY . /app
 
 # Update package lists and install system dependencies
 RUN apt-get update 
-# RUN apt-get install -y libpango-1.0-0 libcairo2
+# RUN sudo apt-get install -y libpango-1.0-0 libcairo2
 
 # Upgrade pip and install Python packages from requirements.txt
 RUN pip install --upgrade pip
@@ -26,4 +26,4 @@ RUN pip install -r requirements.txt
 # EXPOSE 8080
 
 # Define an entrypoint to run your Django application with Gunicorn
-CMD ["gunicorn", "-b", ":8080", "main:APP"]
+CMD ["gunicorn", "ovbioise.wsgi:application"]
