@@ -70,9 +70,17 @@
 
                                     <form class="user" method="POST">
                                         {% if messages %}
-                                        {% for message in messages %}
-                                            <p class="error-message">{{message}}</p>
-                                        {% endfor %}
+                                            {% for message in messages %}
+                                            {% if message.tags == "success" %}
+                                            <div class="alert alert-success mx-3" role="alert">
+                                                {{message}}
+                                            </div>
+                                            {% else %}
+                                            <div class="alert alert-danger mx-3" role="alert">
+                                                {{message}}
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
                                         {% endif %}
                                         {% csrf_token %}
                                         <div class="form-group">

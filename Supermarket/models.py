@@ -33,7 +33,7 @@ class ProductCategory(models.Model):
 
 
 class Products(models.Model):
-    product_name = models.TextField(blank=False, null=False)
+    product_name = models.TextField(blank=False, null=False, unique=True)
     product_id = models.AutoField(
         auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     custom_id = models.CharField(
@@ -222,8 +222,48 @@ class ProcurementList(models.Model):
         return date
 
 
+class Invoice(models.Model):
+    name = models.CharField(
+        max_length=50, blank=False, null=False)
+    invoice_number = models.CharField(
+        max_length=50, blank=False, null=False, default=random_string)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    issue_date = models.DateField(auto_now_add=True)
+    due_date = models.DateField()
+    payment_status = models.BooleanField(default=False)
+    total_amount = models.DecimalField(
+        max_digits=10, decimal_places=2, blank=True, null=True)
+
+    def __str__(self) -> str:
+        return str(self.name) + " - " + self.invoice_number
+
+    @property
+    def products_in_invoice(self):
+        products = self.saleslist_set.all()
+        return products
+
+    @property
+    def derived_total_amount(self):
+        # Here we compute the total price of all the sales product under this invoice
+        products = self.saleslist_set.all()
+        total = 0
+        for product in products:
+            total += product.total
+        return total
+
+    @property
+    def derive_total_quantity(self):
+        products = self.saleslist_set.all()
+        total = 0
+        for product in products:
+            total += product.quantity_sold
+        return total
+
+
 class SalesList(models.Model):
     SALES_TYPE = [('Retail', 'Retail'), ('Wholesale', 'Wholesale')]
+    invoice = models.ForeignKey(
+        Invoice, on_delete=models.SET_NULL, null=True, blank=True)
     product_name = models.TextField(blank=True, null=True)
     price = models.IntegerField(default=0)
     sales_ref = models.CharField(
@@ -237,6 +277,7 @@ class SalesList(models.Model):
         help_text='total = price * quantity_sold', blank=True, null=True)
     date = models.DateField(auto_now_add=True)
     ordered_date = models.DateTimeField(auto_now_add=True)
+    payment_status = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = "Sales List"
@@ -252,6 +293,7 @@ class SalesList(models.Model):
 
 class Transactions(models.Model):
     total_amount = models.IntegerField(verbose_name='total amount', default=0)
+
     amount_received = models.IntegerField(
         verbose_name='amount received', default=0)
     amount_tendered = models.IntegerField(
@@ -286,6 +328,8 @@ class Sales(models.Model):
                                  default=1
                                  )
     ordered_date = models.DateTimeField(auto_now_add=True)
+    invoice = models.ForeignKey(
+        Invoice, on_delete=models.CASCADE, null=True, blank=True)
 
     @property
     def date_format(self):

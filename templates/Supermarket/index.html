@@ -59,9 +59,15 @@
                 <div class="container-fluid">
                     {% if messages %}
                     {% for message in messages %}
-                      <div class="{{message.tags}}" style="font-size: 14px;">
+                    {% if message.tags == "success" %}
+                    <div class="alert alert-success mx-3" role="alert">
                         {{message}}
-                      </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger mx-3" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
                     {% endfor %}
                   {% endif %}
                   <br/>
@@ -90,12 +96,16 @@
                     </div>
                 </div>
 
+               <div style="width: 100%; height: 300px;">
+                    <canvas id="myChart"></canvas>
+                </div>
+
                 
                     <div class="row">
                         
                             
                                 {% if products %}
-                                    <div class="col-md-8 col-sm-12 col-lg-8 mb-3">
+                                    <div class="col-xl-12 col-md-8 col-sm-12 col-lg-8 mb-3">
                                     <div class="card">
                                          <!-- Card Header - Dropdown -->
                                         <div
@@ -168,7 +178,7 @@
 
 
 
-                                    <div  class="col-md-8 col-sm-12 col-lg-8 mb-3">
+                                    <div  class="col-xl-12 col-md-12 col-sm-12 col-lg-12 mb-3">
                                         <div class="card">
                                          <!-- Card Header - Dropdown -->
                                         <div
@@ -204,7 +214,7 @@
                             {% endif %}
 
                             <!-- Appoimtments Counter - Up -->
-                        <div class="col-xl-4 col-lg-3 col-md-4">
+                        <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -217,7 +227,7 @@
                                     <div class="row">
                 
                                         <!-- Earnings (Monthly) Card Example -->
-                                        <div class="col-xl-12 col-md-12 mb-4">
+                                        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
                                             <div class="card border-left-primary shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
@@ -234,7 +244,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xl-12 col-md-12 mb-4">
+                                        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
                                             <div class="card border-left-success shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
@@ -252,7 +262,7 @@
                                         </div>
 
 
-                                        <div class="col-xl-12 col-md-12 mb-4">
+                                        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
                                             <div class="card border-left-warning shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
@@ -276,7 +286,7 @@
 
                         <!-- Products Out of Stock -->
                         {% if products_out_of_stock %}
-                                <div class="col-md-8 col-sm-12 col-lg-8 mb-3">
+                                <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12 mb-3">
                                     <div class="card">
                                          <!-- Card Header - Dropdown -->
                                         <div
@@ -348,7 +358,7 @@
 
                             {% else %}
 
-                                    <div  class="col-md-8 col-sm-12 col-lg-8 mb-3">
+                                    <div  class="col-xl-12 col-md-12 col-sm-12 col-lg-12 mb-3">
                                         <div class="card">
                                          <!-- Card Header - Dropdown -->
                                         <div
@@ -385,7 +395,7 @@
 
 
                                <!-- Appoimtments Counter - Up -->
-                        <div class="col-xl-4 col-lg-3 col-md-4">
+                        <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -398,14 +408,14 @@
                                     <div class="row">
                 
                                         <!-- Earnings (Monthly) Card Example -->
-                                        <div class="col-xl-12 col-md-12 mb-4">
+                                        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
                                             <div class="card border-left-primary shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
                                                             <div class="text-xs text-center font-weight-bold text-success text-uppercase mb-1">
                                                                 Today's Total Purchase</div>
-                                                            <div class="h5 mb-0 text-center font-weight-bold text-gray-800">&#8358;{{total_daily_purchase}}</div>
+                                                            <div class="h5 mb-0 text-center font-weight-bold text-gray-800" id="total_daily_purchase"></div>
                                                         </div>
                                                         <div class="col-auto">
                                                             <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
@@ -415,14 +425,14 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xl-12 col-md-12 mb-4">
+                                        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
                                             <div class="card border-left-success shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
                                                             <div class="text-xs text-center font-weight-bold text-success text-uppercase mb-1">
                                                                 Today's Total Sales</div>
-                                                            <div class="h5 mb-0 text-center font-weight-bold text-gray-800">&#8358;{{total_daily_sales}}</div>
+                                                            <div class="h5 mb-0 text-center font-weight-bold text-gray-800" id="total_daily_sales"></div>
                                                         </div>
                                                         <div class="col-auto">
                                                             <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
@@ -433,14 +443,14 @@
                                         </div>
 
 
-                                        <div class="col-xl-12 col-md-12 mb-4">
+                                        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
                                             <div class="card border-left-warning shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
                                                             <div class="text-xs text-center font-weight-bold text-success text-uppercase mb-1">
                                                                 Yesterday's Total Purchase</div>
-                                                            <div class="h5 mb-0 text-center font-weight-bold text-gray-800">&#8358;{{yesterday_purchase_total}}</div>
+                                                            <div class="h5 mb-0 text-center font-weight-bold text-gray-800" id="yesterday_purchase_total"></div>
                                                         </div>
                                                         <div class="col-auto">
                                                             <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
@@ -450,14 +460,14 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xl-12 col-md-12 mb-4">
+                                        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
                                             <div class="card border-left-warning shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
                                                             <div class="text-xs text-center font-weight-bold text-success text-uppercase mb-1">
                                                                 Yesterday's Total Sales</div>
-                                                            <div class="h5 mb-0 text-center font-weight-bold text-gray-800">&#8358;{{yesterday_sales_total}}</div>
+                                                            <div class="h5 mb-0 text-center font-weight-bold text-gray-800" id="yesterday_sales_total"></div>
                                                         </div>
                                                         <div class="col-auto">
                                                             <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
@@ -505,6 +515,8 @@
 
     {% include 'logout_popup.html' %}
 
+
+
     <!-- Bootstrap core JavaScript-->
 <script src="{% static 'sb-bootstrap/vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'sb-bootstrap/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
@@ -524,10 +536,53 @@
 <script src="{% static 'sb-bootstrap/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
 
 <!-- Page level custom scripts -->
-<script src="{% static 'sb-bootstrap/js/demo/datatables-demo.js"></script>
+<!-- <script src="{% static 'sb-bootstrap/js/demo/datatables-demo.js' %}"></script> -->
 
 
 <!--  <script src="{% static 'sb-bootstrap\js\sb-admin-2.js' %}"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    // Fetch data from your Django view (you can use AJAX or other methods)
+    fetch('/supermarket/chart-data')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.chart_labels)
+            const myChart = new Chart(ctx, {
+                type: 'bar',  // The type of chart you want
+                data: {
+                    labels: data.chart_labels,
+                    datasets: [{
+                        label: 'Qty sold',
+                        data: data.chart_data,  // Use the data fetched from the view
+                        backgroundColor: '#1cc88a',
+                    }]
+                },
+                options: {
+                    responsive: true, // Set the chart to be responsive
+                },
+            });
+        });
+
+        const formatNumberToCurrency = (numberStr) => {
+            const formatter = Intl.NumberFormat("en", {
+                currency: "NGN",
+            });
+            const formatted = "₦ " + formatter.format(numberStr);
+            return formatted;
+        }
+
+        document.getElementById("total_daily_purchase").innerText = formatNumberToCurrency("{{total_daily_purchase}}");
+        document.getElementById("total_daily_sales").innerText = formatNumberToCurrency("{{total_daily_sales}}");
+        document.getElementById("yesterday_purchase_total").innerText = formatNumberToCurrency("{{yesterday_purchase_total}}");
+        document.getElementById("yesterday_sales_total").innerText = formatNumberToCurrency("{{yesterday_sales_total}}");
+
+
+</script>
 
 
 </body>

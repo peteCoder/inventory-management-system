@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reciept</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Gabarito", sans-serif;
+      }
+
+      .wrapper {
+        padding: 2rem 4rem;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .divider {
+        margin: 1em 0;
+      }
+
+      .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo > h1 {
+        font-weight: 200;
+        font-size: 18px;
+      }
+
+      .address {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 3rem 0;
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      .left-list {
+        list-style: none;
+        line-height: 1.5em;
+      }
+
+      .blue {
+        color: #2dd799;
+      }
+
+      .right-list {
+        list-style-type: square;
+      }
+
+      .status {
+        padding: 1px 0.5em;
+        border: 1px solid rgb(137, 137, 10);
+        background-color: yellow;
+        color: #333;
+        border-radius: 50px;
+      }
+      .status.paid {
+        border: 1px solid #025f3d;
+        background-color: #119665;
+        color: white;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      tr {
+        text-align: center;
+      }
+
+      tr > th {
+        padding: 1rem 0;
+        margin: 0;
+        color: white;
+        background-color: #119665;
+      }
+
+      tr:nth-child(even) {
+        background-color: #5cd7aa;
+        color: white;
+        /* border: 1px solid rgb(131, 186, 253); */
+      }
+
+      td {
+        padding: 1rem 0;
+      }
+
+      .total {
+        margin: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .total-column {
+        list-style: none;
+        font-size: 20px;
+      }
+
+      .total-column > li > span:nth-child(1) {
+        color: #5cd7aa;
+        font-weight: 600;
+      }
+
+      .payment {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .pay-btn {
+        outline: none;
+        color: white;
+        background: #1cc88a;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+        text-transform: capitalize;
+      }
+
+      .pay-btn:hover {
+        color: white;
+        background: #2dd799;
+      }
+
+      .divider {
+        border: 1px solid rgb(194, 194, 194);
+      }
+
+      .print-btn {
+        outline: none;
+        color: #1cc88a;
+        font-weight: 600;
+        background: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: 1px solid #1cc88a;
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+        text-transform: capitalize;
+      }
+
+      .print-btn:hover {
+        color: white;
+        background: #1cc88a;
+      }
+
+      li {
+        margin-bottom: 9px;
+      }
+
+      .arrow-btn {
+        outline: none;
+        color: #1cc88a;
+        font-weight: 600;
+        background: white;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: 1px solid #1cc88a;
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+        text-transform: capitalize;
+      }
+
+      .arrow-btn:hover {
+        color: white;
+        background: #1cc88a;
+      }
+      .arrow-btn span:nth-child(2) {
+        font-size: 15px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .wrapper {
+          padding: 2rem;
+        }
+
+        .total-column {
+          list-style: none;
+          font-size: 16px;
+        }
+
+        .print-btn {
+          outline: none;
+          color: #00a76a;
+          font-weight: 600;
+          background: white;
+          font-size: 18px;
+          padding: 5px 10px;
+          border: 1px solid #1cc88a;
+          cursor: pointer;
+          transition: all ease-in-out 0.2s;
+          text-transform: capitalize;
+        }
+
+        .print-btn:hover {
+          color: white;
+          background: #1cc88a;
+        }
+
+        .address {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="">
+          <button onclick="goBack()" class="arrow-btn">
+            <span>&larr;</span>
+            <span> Go back</span>
+          </button>
+        </div>
+        <div class="buttons">
+          {% if products %}
+
+          <form method="POST">
+            {% csrf_token %}
+            <button name="PrintBtn" class="print-btn">print</button>
+            <button name="ExportBtn" class="print-btn">export</button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if messages %}
+        {% for message in messages %}
+          {% if message.tags == "success" %}
+          <div class="alert alert-success mx-3" role="alert">
+              {{message}}
+          </div>
+          {% else %}
+          <div class="alert alert-danger mx-3" role="alert">
+              {{message}}
+          </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <hr class="divider" />
+
+      <div class="logo">
+        <h1>Company Name</h1>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="address">
+        <div class="left">
+          <ul class="left-list">
+            <li>
+              To: <br />
+              <span class="blue">{{invoice.customer.name}}</span>
+            </li>
+            <li>
+              Address: <br />
+              <span>{{invoice.customer.address}}</span>
+            </li>
+            <!-- <li>State, Country</li> -->
+            <li>
+              Phone: <br />
+              <span>{{invoice.customer.phone}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <span>Invoice</span>
+          <ul class="right-list">
+            <li>ID: {{invoice.invoice_number}}</li>
+            <li>ISSUE DATE: {{invoice.issue_date}}</li>
+            {% if products %}
+            <li>
+              STATUS: {% if invoice.payment_status %}
+              <span class="status paid">paid</span>
+              {% else %}
+              <span class="status">unpaid</span>
+              {% endif %}
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Qty</th>
+          <th>Unit price</th>
+          <th>Amount</th>
+        </tr>
+        {% if products %} {% for product in products %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{product.product_name}}</td>
+          <td>{{product.quantity_sold}}</td>
+          <td>&#8358;{{product.price}}</td>
+          <td>&#8358;{{product.total}}</td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr style="text-align: center">
+          No data
+        </tr>
+        {% endif %}
+      </table>
+
+      <div class="total">
+        <div>
+          <span>Company Name</span>
+        </div>
+        <div>
+          <ul class="total-column">
+            <li>
+              <span>Total</span>
+              <span>&#8358; {{invoice.derived_total_amount}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="payment">
+        <div>
+          <p>Thank you for your patronage...</p>
+        </div>
+        <div>
+          {% if products %}
+          <form method="POST">
+            {% csrf_token %} {% if not invoice.payment_status %}
+            <button name="PayNowButton" class="pay-btn">Pay Now</button>
+            {% endif %}
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function goBack() {
+        history.back();
+      }
+    </script>
+  </body>
+</html>

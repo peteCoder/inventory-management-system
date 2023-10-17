@@ -45,6 +45,20 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.tags == "success" %}
+                    <div class="alert alert-success mx-3" role="alert">
+                        {{message}}
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger mx-3" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                  {% endif %}
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800 font-weight-bold">

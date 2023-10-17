@@ -63,12 +63,18 @@
         {% include 'sup_navbar.html' %}
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container">
                     {% if messages %}
                     {% for message in messages %}
-                      <div class="{{message.tags}}" style="font-size: 14px;">
+                    {% if message.tags == "success" %}
+                    <div class="alert alert-success mx-3" role="alert">
                         {{message}}
-                      </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger mx-3" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
                     {% endfor %}
                   {% endif %}
                   <br/>
@@ -86,11 +92,11 @@
             
 
             <!-- Main Content -->
-            <div class="container-fluid">
+            <div class="">
                 <div class="col-lg-12">
                     <div class="row">
                         <!-- FORM Panel -->
-                        <div class="col-md-4">
+                        <div class="col-md-12 col-xl-4 col-lg-6">
                         <form method="POST" id="manage-customer">
 
                             {% csrf_token %}
@@ -149,7 +155,7 @@
                         <!-- FORM Panel -->
             
                         <!-- Table Panel -->
-                        <div class="col-md-8">
+                        <div class="col-md-12 col-xl-8 col-lg-6">
                             <div class="card">
                                     <div class="card-header text-white bg-success">
                                     Supplier List

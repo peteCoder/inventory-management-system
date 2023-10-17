@@ -1,58 +1,195 @@
-<!DOCTYPE html>
-{% load static %}
 <html>
-<head>
-	<title>product list pdf</title>
-</head>
-<body>
-	
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 bg-primary">
-            {% if title %}
-            <h1 class="m-0 font-weight-bold text-white">{{title}}</h1>
-            {% else %}
-            <h1 class="m-0 font-weight-bold text-white">Product Datatable</h1>
-            {% endif %}
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-dark p-4" id="dataTable" width="100%" cellspacing="0">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th class="text-center">S/N</th>
-                            <th class="text-center">Product Name</th>
-                            <th class="text-center">Expiry Date</th>
-                            <th class="text-center">Product Category</th>
-                            <th class="text-center">Product Type</th>
-                            <th class="text-center">Quantity on hand</th>
-                            <th class="text-center">Cost Price</th>
-                            <th class="text-center">Sales Price</th>
-                            
-                        </tr>
-                    </thead>
-            
-                    <tbody>
-                        
+  <head>
+    <meta charset="utf-8" />
+    <title>Expired</title>
+    <meta name="description" content="Invoice demo sample" />
+  </head>
 
-                        {% for product in queryset %}
-                        <tr> 
-                            <td class="text-center">{{forloop.counter}}</td>
-                            <td class="text-center">{{product.product_name}}</td>
-                            <td class="text-center">{{product.expiry_date}}</td>
-                            <td class="text-center">{{product.product.product_category.name}}</td>
-                            <td class="text-center">{{product.product.product_type.name}}</td>
-                            <td class="text-center">{{product.quantity_ordered}}</td>
-                            <td class="text-center">&#8358; {{product.product.cost_price}}</td> 
-                            <td class="text-center">&#8358; {{product.product.sales_price}}</td> 
-                        </tr>
+  <style>
+    @page {
+      font-family: Pacifico;
+      margin: 3cm;
+      @bottom-left {
+        color: #1ee494;
+        content: "Built with ♥";
+      }
+      @bottom-right {
+        color: #a9a;
+        content: "contact@myconpanyname.org | mycomapnyname";
+        font-size: 9pt;
+      }
+    }
 
-                        {% endfor %}
+    html {
+      color: #14213d;
+      font-family: Source Sans Pro;
+      font-size: 11pt;
+    }
+    body {
+      margin: 0;
+    }
 
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    h1 {
+      color: #1ee494;
+      font-family: Pacifico;
+      font-size: 40pt;
+      margin: 0;
+    }
+
+    aside:last-of-type {
+      margin: 0 0 4em;
+    }
+    aside address {
+      font-style: normal;
+      white-space: pre-line;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+    aside address#from {
+      color: #a9a;
+    }
+    aside address#to {
+      text-align: left;
+    }
+
+    dl {
+      position: absolute;
+      right: 0;
+      text-align: left;
+      top: 0;
+    }
+    dt,
+    dd {
+      display: inline;
+      margin: 0;
+    }
+    dt {
+      color: #a9a;
+    }
+    dt::before {
+      content: "";
+      display: block;
+    }
+    dt::after {
+      content: ":";
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th {
+      border-bottom: 0.2mm solid #a9a;
+      color: #a9a;
+      font-size: 10pt;
+      font-weight: 400;
+      padding-bottom: 0.25cm;
+      text-transform: uppercase;
+    }
+    td {
+      padding-top: 7mm;
+    }
+    td:last-of-type {
+      color: #1ee494;
+      font-weight: bold;
+      text-align: right;
+    }
+    th,
+    td {
+      text-align: center;
+    }
+    th:first-of-type,
+    td:first-of-type {
+      text-align: left;
+    }
+    th:last-of-type,
+    td:last-of-type {
+      text-align: right;
+    }
+    table#t-one {
+      margin-bottom: 20rem;
+    }
+
+    table#total {
+      background: #f6f6f6;
+      border-color: #f6f6f6;
+      border-style: solid;
+      border-width: 2cm 3cm;
+      bottom: 0;
+      font-size: 20pt;
+      margin: 0 -3cm;
+      position: absolute;
+      width: 18cm;
+    }
+  </style>
+
+  <body>
+    <h1>Expired Products</h1>
+    <div style="display: flex; flex-direction: column; gap: 3rem">
+      <aside>
+        <address id="from"></address>
+
+        <address id="to"></address>
+      </aside>
+
+      <aside style="margin-top: 3rem">
+        <address id="from"></address>
+
+        <address id="to"></address>
+      </aside>
     </div>
-</body>
+
+    <div style="margin-bottom: 2rem; color: black">
+      <address style="display: flex; flex-direction: column; gap: 1rem">
+        <span></span>
+        <span></span>
+        <span></span>
+      </address>
+    </div>
+
+    <table id="t-one">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Expiry Date</th>
+          <th>Has Expired</th>
+          <th>Qty</th>
+          <th>Sales Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for query in queryset %}
+        <tr>
+          <td>{{query.product_name}}</td>
+          <td>{{query.expiry_date}}</td>
+          <td>
+            {% if query.product_has_expired_already %} 
+            Yes 
+            {% else %} 
+            No 
+            {%endif %}
+          </td>
+          <td>{{query.quantity_ordered}}</td>
+          <td>&#8358; {{query.product.sales_price}}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <table id="total">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Total Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>&#8358;{{total_amount_for_expired_products}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
 </html>

@@ -61,9 +61,15 @@
                 <div class="container-fluid">
                   {% if messages %}
                     {% for message in messages %}
-                      <div class="{{message.tags}}" style="font-size: 14px;">
+                    {% if message.tags == "success" %}
+                    <div class="alert alert-success mx-3" role="alert">
                         {{message}}
-                      </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger mx-3" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
                     {% endfor %}
                   {% endif %}
                   <br/>
@@ -81,10 +87,7 @@
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="d-flex justify-content-end">
-                    <a class="btn btn-sm btn-success mb-2 mr-2" href="#" data-toggle="modal"
-                    data-target="#WholesalereportModal">
-                        Wholesale Report
-                    </a>
+                   
 
                     <a class="btn btn-sm btn-success mb-2 mr-2" href="#" data-toggle="modal"
                     data-target="#reportModal">
@@ -100,9 +103,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                             aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{% url 'super:pos' %}">Retail Sale</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'super:wholesale_pos' %}">Wholesale Sale</a>
+                            <a class="dropdown-item" href="{% url 'super:pos' %}">Make Sale</a>
                         </div>
                     </div>
                     {% endif %}
@@ -121,14 +122,15 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
-                                        <th class="text-center">Product Name</th>
-                                        <th class="text-center">Sales Reference</th>
-                                        <th class="text-center">Sales Type</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Sales ID</th>
                                         <th class="text-center">Date</th>
                                         <th class="text-center">Customer</th>
                                         <th class="text-center">Price</th>
                                         <th class="text-center">Quantity</th>
                                         <th class="text-center">Total</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-right"></th>
                                         
                                     </tr>
                                 </thead>
@@ -139,12 +141,25 @@
                                         <td class="text-center">{{forloop.counter}}</td>
                                         <td class="text-center">{{sale.product_name}}</td>
                                         <td class="text-center">{{sale.sales_ref}}</td>
-                                        <td class="text-center">{{sale.sales_type}}</td>
                                         <td class="text-center">{{sale.date_format}}</td>
                                         <td class="text-center">{{sale.customer}}</td>
                                         <td class="text-center">&#8358; {{sale.price}}</td>
                                         <td class="text-center">{{sale.quantity_sold}}</td> 
                                         <td class="text-center">&#8358; {{sale.total}}</td> 
+                                        <td class="text-center">
+                                            {% if sale.payment_status %}
+                                            Paid
+                                            {% else %}
+                                            Unpaid
+                                            {% endif %}
+                                        </td> 
+                                        {% if request.user.profile.position == 'manager' and not sale.payment_status %}
+                                        <td class="text-right">
+                                            <a class="text-danger" href="{% url 'super:delete_sales_from_list' sale.pk %}">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                         </td>
+                                         {% endif %}
                                         
                                     </tr>
                                   {% endfor %}
@@ -184,13 +199,13 @@
              </div>
              <div class="modal-body bg-success">
                  <div class="card shadow h-100 py-2">
-                     <div class="card-body">
-                         <div class="row no-gutters align-items-center">
-                                 <div class="mb-0 font-weight-bold  text-danger ">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-left">
+                                    <div class="mb-0 font-weight-bold  text-danger w-100">
                                     
-                                    <div>
-                                    <input name="RetailDate" type="date" class="form-control form-control-user w-100" >
-                                    <p class="text-muted text-center text-primary">Select Date </p>
+                                    <div >
+                                    <input name="RetailDate" type="date" style="width: 100%;" class="form-control form-control-user w-100" >
+                                    <p class="text-muted text-left mt-2 text-primary">Select Date </p>
                                     </div>
                                     
                                  </div>
@@ -211,48 +226,6 @@
          </div>
      </div>
 
-          <!-- Wholesale Sales Report Modal-->
-          <div class="modal fade" id="WholesalereportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="modal-header">
-                        <h5 class="modal-title bold text-success" id="exampleModalLabel">GENERATE WHOLESALES REPORT FOR</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body bg-success">
-                        <div class="card shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="mb-0 font-weight-bold  text-danger ">
-                                
-                                        <div>
-                                            <input name="WholesaleDate" type="date" class="form-control form-control-user w-100" >
-                                        <p class="text-muted text-center text-success">Select Date </p>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </div>
-                        <div class="modal-footer bg-gray">
-                            <a href="" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</a>
-                            <button name="WholesalePrint" class="btn btn-success btn-sm">
-                            <i class="fas fa-print"></i>
-                            Print
-                            </button>
-                        </div>
-
-                </form>
-                  </div>
-                  
-              </div>
-          </div>
  </div>
 
     <!-- For Logout Popup -->
@@ -261,14 +234,14 @@
 
 
 
-    <script>
-        $(document).ready(function() {
-            $('.js-example-basic-single').select2();
-        });
-    </script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 
 
-    <!-- Bootstrap core JavaScript-->
+<!-- Bootstrap core JavaScript-->
 <script src="{% static 'sb-bootstrap/vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'sb-bootstrap/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
 
@@ -288,9 +261,6 @@
 
 <!-- Page level custom scripts -->
 <script src="{% static 'sb-bootstrap/js/demo/datatables-demo.js' %}"></script>
-
-
-<!--  <script src="{% static 'sb-bootstrap\js\sb-admin-2.js' %}"></script> -->
 
 
 </body>

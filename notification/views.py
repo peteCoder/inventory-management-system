@@ -9,7 +9,7 @@ from .models import SupermarketNotification
 
 def showNotificationsSupermarket(request):
     notifications = SupermarketNotification.objects.all().order_by(
-        '-ordered_date')[:5]
+        '-pk')[:5]
     notification_count = SupermarketNotification.objects.filter(
         is_seen=False).all().count()
     notification = SupermarketNotification.objects.filter(is_seen=False).all()

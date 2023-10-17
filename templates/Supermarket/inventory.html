@@ -62,9 +62,15 @@
 
                     {% if messages %}
                     {% for message in messages %}
-                      <div class="{{message.tags}}" style="font-size: 14px;">
+                    {% if message.tags == "success" %}
+                    <div class="alert alert-success mx-3" role="alert">
                         {{message}}
-                      </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger mx-3" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
                     {% endfor %}
                   {% endif %}
                   <br/>
@@ -110,10 +116,10 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
-                                        <th class="text-center">Product Name</th>
-                                        <th class="text-center">Product ID</th>
-                                        <th class="text-center">Product Category</th>
-                                        <th class="text-center">Quantity on hand</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Category</th>
+                                        <th class="text-center">Quantity</th>
                                         
                                         <th class="text-center">Cost Price</th>
                                         <th class="text-center">Sales Price</th>

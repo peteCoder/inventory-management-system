@@ -60,9 +60,15 @@
                 <div class="container-fluid">
                     {% if messages %}
                     {% for message in messages %}
-                      <div class="{{message.tags}}" style="font-size: 14px;">
+                    {% if message.tags == "success" %}
+                    <div class="alert alert-success mx-3" role="alert">
                         {{message}}
-                      </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger mx-3" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
                     {% endfor %}
                   {% endif %}
                   <br/>
@@ -96,7 +102,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 bg-gradient-success">
-                        <h6 class="m-0 font-weight-bold text-white">Recent Sales</h6>
+                        <h6 class="m-0 font-weight-bold text-white">Recent Orders</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -104,9 +110,9 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
-                                        <th class="text-center">Product Name</th>
-                                        <th class="text-center">Reference</th>
-                                        <th class="text-center">Expiry Date</th>
+                                        <th class="text-left">Product Name</th>
+                                        <th class="text-left">Expiry Date</th>
+                                        <th class="text-center">Has Expired</th>
                                         <th class="text-center">Supply Date</th>
                                         <th class="text-center">Supplier</th>
                                         <th class="text-center">Price</th>
@@ -123,9 +129,15 @@
                                     {% for purchase in purchases %}
                                     <tr> 
                                         <td class="text-center">{{forloop.counter}}</td>
-                                        <td class="text-center">{{purchase.product_name}}</td>
-                                        <td class="text-center">{{purchase.purchase_ref}}</td>
-                                        <td class="text-center">{{purchase.expiry_date}}</td>
+                                        <td class="text-left">{{purchase.product_name}}</td>
+                                        <td class="text-left">{{purchase.expiry_date}}</td>
+                                         <td class="text-center">
+                                            {% if purchase.product_has_expired_already %} 
+                                            Yes 
+                                            {% else %} 
+                                            No 
+                                            {%endif %}
+                                        </td>
                                         <td class="text-center">{{purchase.date}}</td>
                                         <td class="text-center">{{purchase.supplier}}</td> 
                                         <td class="text-center">&#8358; {{purchase.price}}</td>

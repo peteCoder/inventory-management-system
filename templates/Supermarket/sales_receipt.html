@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reciept</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Gabarito", sans-serif;
+      }
+
+      .wrapper {
+        padding: 2rem 4rem;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .divider {
+        margin: 1em 0;
+      }
+
+      .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo > h1 {
+        font-weight: 200;
+        font-size: 18px;
+      }
+
+      .address {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 3rem 0;
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      .left-list {
+        list-style: none;
+        line-height: 1.5em;
+      }
+
+      .blue {
+        color: #2dd799;
+      }
+
+      .right-list {
+        list-style-type: square;
+      }
+
+      .status {
+        padding: 1px 0.5em;
+        border: 1px solid rgb(137, 137, 10);
+        background-color: yellow;
+        color: #333;
+        border-radius: 50px;
+      }
+      .status.paid {
+        border: 1px solid #025f3d;
+        background-color: #119665;
+        color: white;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      tr {
+        text-align: center;
+      }
+
+      tr > th {
+        padding: 1rem 0;
+        margin: 0;
+        color: white;
+        background-color: #119665;
+      }
+
+      tr:nth-child(even) {
+        /* background-color: #5cd7aa; */
+        color: black;
+        /* border: 1px solid rgb(131, 186, 253); */
+      }
+
+      td {
+        padding: 1rem 0;
+      }
+
+      .total {
+        margin: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .left, .right {
+        flex-basis: 50%;
+        width: 100%;
+        padding: 20px;
+      }
+      .left-list li, .right-list li {
+        margin-bottom: 20px;
+        list-style-type: none;
+      }
+
+      .total-column {
+        list-style: none;
+        font-size: 20px;
+      }
+
+      .total-column > li > span:nth-child(1) {
+        color: #5cd7aa;
+        font-weight: 600;
+      }
+
+      .payment {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .pay-btn {
+        outline: none;
+        color: white;
+        background: #1cc88a;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+        text-transform: capitalize;
+      }
+
+      .pay-btn:hover {
+        color: white;
+        background: #2dd799;
+      }
+
+      .divider {
+        border: 1px solid rgb(194, 194, 194);
+      }
+
+      .print-btn {
+        outline: none;
+        color: #1cc88a;
+        font-weight: 600;
+        background: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: 1px solid #1cc88a;
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+        text-transform: capitalize;
+      }
+
+      .print-btn:hover {
+        color: white;
+        background: #1cc88a;
+      }
+
+      li {
+        margin-bottom: 9px;
+      }
+
+      .arrow-btn {
+        outline: none;
+        color: #1cc88a;
+        font-weight: 600;
+        background: white;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: 1px solid #1cc88a;
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+        text-transform: capitalize;
+      }
+
+      .arrow-btn:hover {
+        color: white;
+        background: #1cc88a;
+      }
+      .arrow-btn span:nth-child(2) {
+        font-size: 15px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .wrapper {
+          padding: 2rem;
+        }
+
+        .total-column {
+          list-style: none;
+          font-size: 16px;
+        }
+
+        .print-btn {
+          outline: none;
+          color: #00a76a;
+          font-weight: 600;
+          background: white;
+          font-size: 18px;
+          padding: 5px 10px;
+          border: 1px solid #1cc88a;
+          cursor: pointer;
+          transition: all ease-in-out 0.2s;
+          text-transform: capitalize;
+        }
+
+        .print-btn:hover {
+          color: white;
+          background: #1cc88a;
+        }
+
+        .address {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="">
+          
+        </div>
+        <div class="buttons">
+          {% if sales %}
+
+          <form method="POST">
+            {% csrf_token %}
+            
+          </form>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if messages %}
+        {% for message in messages %}
+          {% if message.tags == "success" %}
+          <div class="alert alert-success mx-3" role="alert">
+              {{message}}
+          </div>
+          {% else %}
+          <div class="alert alert-danger mx-3" role="alert">
+              {{message}}
+          </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <hr class="divider" />
+
+      <div class="logo">
+        <h1>Company Name</h1>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="address">
+        <div class="left">
+          <ul class="left-list">
+            <li>
+              Comapany Address: <br />
+              <span style="max-width: 400px;">32, Dummy Street, off Murtala Mohammed way, Benin. </span>
+            </li>
+            <!-- <li>State, Country</li> -->
+            <li>
+              Comapany Phone: <br />
+              <span>+23481930376</span>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <span></span>
+          <ul class="right-list">
+            <li>Date Issued: <span id="todaysDate"></span></li>
+            <li>Document Type: <span>Receipt</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Qty</th>
+          <th>Unit price</th>
+          <th>Amount</th>
+        </tr>
+        {% if sales %} {% for sale in sales %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{sale.product.product_name}}</td>
+          <td>{{sale.quantity_sold}}</td>
+          <td>&#8358;{{sale.product.product.sales_price}}</td>
+          <td>&#8358;{{sale.individual_total}}</td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr style="text-align: center">
+          No data
+        </tr>
+        {% endif %}
+      </table>
+
+      <div class="total">
+        <div>
+          <!-- <span>Company Name</span> -->
+        </div>
+        <div>
+          <ul class="total-column">
+            <li>
+              <span>Total: </span>
+              <span>&#8358;<span id="getTotal">{{get_total}}</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="payment">
+        <div>
+          <p>Thank you for your patronage...</p>
+        </div>
+        <div>
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+        const total_price = "{{get_total}}";
+
+        formatter = Intl.NumberFormat("en", {
+            currency: "USD"
+        });
+        formatted_total = formatter.format(total_price);
+
+        document.getElementById("getTotal").innerText = formatted_total;
+
+        const todaysDate = new Date();
+        const date = todaysDate.toLocaleDateString();
+
+        document.getElementById("todaysDate").innerText = date;
+    </script>
+  </body>
+</html>

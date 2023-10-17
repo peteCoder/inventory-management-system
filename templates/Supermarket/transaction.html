@@ -61,9 +61,15 @@
                 <div class="container-fluid">
                   {% if messages %}
                     {% for message in messages %}
-                      <div class="{{message.tags}}" style="font-size: 14px;">
+                    {% if message.tags == "success" %}
+                    <div class="alert alert-success mx-3" role="alert">
                         {{message}}
-                      </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger mx-3" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
                     {% endfor %}
                   {% endif %}
                   <br/>
@@ -110,9 +116,8 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                             aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{% url 'super:pos' %}">Retail Sale</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'super:wholesale_pos' %}">Wholesale Sale</a>
+                            <a class="dropdown-item" href="{% url 'super:pos' %}">Make Sale</a>
+                            
                         </div>
                     </div>
                     {% endif %}
@@ -197,12 +202,12 @@
                     <div class="modal-body bg-success">
                         <div class="card shadow h-100 py-2">
                             <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="mb-0 font-weight-bold  text-danger ">
+                                <div class="row no-gutters align-items-left">
+                                    <div class="mb-0 font-weight-bold  text-danger w-100">
                                 
                                         <div>
-                                            <input name="TransactionDate" type="date" class="form-control form-control-user w-100" >
-                                        <p class="text-muted text-center text-primary">Select Date </p>
+                                            <input name="TransactionDate" type="date" style="width: 100%;" class="form-control form-control-user w-100" >
+                                        <p class="text-muted text-left text-primary mt-2">Select Date </p>
                                         </div>
                                        
                                     </div>

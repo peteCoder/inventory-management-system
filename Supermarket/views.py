@@ -5,9 +5,10 @@ from Supermarket.forms import *
 from django import template
 from django.contrib import messages
 from django.shortcuts import redirect
-from django.db.models import Count
+from django.db.models import Count, Sum
+
 import csv
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import datetime
 from notification.models import SupermarketNotification
 from django.core.files.storage import FileSystemStorage
@@ -17,9 +18,16 @@ from django.conf import settings
 import os
 from .bootstrap import boots
 import datetime
+from django.conf import settings
+
+from django.db.models import Sum, F
+from django.db.models.functions import ExtractWeekDay
+
 
 import logging
-logging.getLogger('weasyprint').setLevel(logging.DEBUG)
+logger = logging.getLogger('weasyprint')
+logger.addHandler(logging.FileHandler(
+    os.path.join(settings.BASE_DIR, "weasyprint.log")))
 # Create your views here.
 
 
@@ -29,6 +37,51 @@ def user_is_manager(user):
 
 def user_is_cashier(user):
     return user.profile.position == 'cashier'
+
+
+def chart_data(request):
+    from datetime import datetime, timedelta
+    from collections import defaultdict
+
+    user = request.user
+
+    # Calculate the start and end dates for the current week
+    today = datetime.now()
+    start_of_week = today - timedelta(days=today.weekday())
+    end_of_week = start_of_week + timedelta(days=6)  # Assuming a 7-day week
+
+    # Fetch data from your Django models or other sources
+    # Here we fetch all the data from the SalesList model
+
+    # Filter for records within the current week
+    current_week_data = SalesList.objects.filter(
+        date__range=[start_of_week, end_of_week]).filter(payment_status=True)
+
+    # Create a dictionary to map ISO weekdays to human-readable days
+    iso_to_human_days = {
+        1: 'Monday',
+        2: 'Tuesday',
+        3: 'Wednesday',
+        4: 'Thursday',
+        5: 'Friday',
+        6: 'Saturday',
+        7: 'Sunday',
+    }
+
+    # Initialize a dictionary to store total quantity sold for each day
+    daily_totals_qty = defaultdict(int)
+
+    # Aggregate the total quantity sold for each day of the week
+    for item in current_week_data:
+        iso_weekday = item.date.weekday() + 1  # Adjust to ISO weekday
+        human_weekday = iso_to_human_days[iso_weekday]
+        daily_totals_qty[human_weekday] += item.quantity_sold
+
+    # Create lists for chart labels and data
+    chart_labels = list(daily_totals_qty.keys())
+    chart_data = [daily_totals_qty[day] for day in chart_labels]
+
+    return JsonResponse({"chart_labels": chart_labels, "chart_data": chart_data}, safe=False)
 
 
 @login_required
@@ -42,20 +95,31 @@ def dashboard(request):
     yesterday_sales_total = 0
 
     daily_procurement = Transactions.objects.filter(
-        date=datetime.date.today()).all()
+        date=today).all()
     yesterday_purchase = Transactions.objects.filter(date=yesterday).all()
+
+    todays_total_paid_sales = SalesList.objects.filter(date=today).filter(payment_status=True).all()
+    yesterdays_total_paid_sales = SalesList.objects.filter(date=yesterday).filter(payment_status=True).all()
+
+    todays_total_sales_count = todays_total_paid_sales.count()
+    yesterdays_total_sales_count = yesterdays_total_paid_sales.count()
+
+    for today_sale in todays_total_paid_sales:
+        total_daily_sales += today_sale.total
+
+    for yesterday_sale in yesterdays_total_paid_sales:
+        yesterday_sales_total += yesterday_sale.total
+
+    
+
 
     for transaction in daily_procurement:
         if transaction.transaction_type == 'Purchase':
             total_daily_purchase += transaction.amount_received
-        elif transaction.transaction_type == 'Sales':
-            total_daily_sales += transaction.amount_received
 
     for transaction in yesterday_purchase:
         if transaction.transaction_type == 'Purchase':
             yesterday_purchase_total += transaction.amount_received
-        elif transaction.transaction_type == 'Sales':
-            yesterday_sales_total += transaction.amount_received
 
     all_transactions_for_yesterday_and_today = Transactions.objects.filter(
         date__range=[yesterday, today]).all().count()
@@ -266,16 +330,21 @@ def expired_list_view(request):
     notification_count = SupermarketNotification.objects.filter(
         is_seen=False).all().count()
 
-    _5_days_ago = datetime.date.today() - datetime.timedelta(days=5)
+    _100_days_ago = datetime.date.today() - datetime.timedelta(days=100)
     _5_days_after = datetime.date.today() + datetime.timedelta(days=5)
     products = ProcurementList.objects.filter(
-        expiry_date__range=[_5_days_ago, _5_days_after]).all()
+        expiry_date__range=[_100_days_ago, _5_days_after]).all()
 
     if request.method == 'POST' and 'PDFInventoryListButton' in request.POST:
         title = 'Expired Products Datatable'
         dir_ = os.path.join(settings.BASE_DIR, 'media')
+
+        total_amount_for_expired_products = 0
+        for product in products:
+            total_amount_for_expired_products += (product.quantity_ordered * product.product.sales_price)
+
         html_string = render_to_string(
-            'pdf/Pharmacy/expired_list_pdf.html', {'queryset': products, 'title': title})
+            'pdf/Pharmacy/expired_list_pdf.html', {'queryset': products, 'title': title, "total_amount_for_expired_products": total_amount_for_expired_products})
         html = HTML(string=html_string)
         html.write_pdf(target=f'{dir_}/tmp/expired_list.pdf',
                        stylesheets=[CSS(string=boots)])
@@ -524,12 +593,13 @@ def inventory(request):
         '-ordered_date')[:2]
     notification_count = SupermarketNotification.objects.filter(
         is_seen=False).all().count()
+
     for product in products:
         print(product.cost_price)
         print(product.sales_price)
 
     if request.method == 'POST' and 'PDFInventoryListButton' in request.POST:
-        title = 'Inventory Datatable'
+        title = 'Inventory Datatables'
         dir_ = os.path.join(settings.BASE_DIR, 'media')
         html_string = render_to_string(
             'pdf/Pharmacy/product_list.html', {'queryset': products, 'title': title, 'date_value': datetime.datetime.now()})
@@ -579,94 +649,6 @@ def inventory(request):
 
 
 @login_required
-def make_sales_view_wholesale(request):
-    sales = Sales.objects.all()
-    notification_count = SupermarketNotification.objects.filter(
-        is_seen=False).all().count()
-    nav_notify = SupermarketNotification.objects.all().order_by(
-        '-ordered_date')[:2]
-
-    get_total_quantity = Sales.get_total_quantity()
-
-    get_total = Sales.get_total()
-
-    form = SalesForm()
-    if request.method == "POST" and "addToList" in request.POST:
-        form = SalesForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Form was submitted successfully")
-            return redirect('super:wholesale_pos')
-        messages.error(request, "There was problem submitting the form")
-
-    if request.method == "POST" and "finalSubmit" in request.POST:
-        Transactions.objects.create(
-            total_amount=int(request.POST['total_amount']),
-            amount_tendered=int(request.POST['amount_tendered']),
-            discount=int(request.POST['discount']),
-            amount_received=int(request.POST['amount_received']),
-            change=int(request.POST['change_given']),
-            transaction_type="Sales"
-        )
-        for sale in sales:
-            SalesList.objects.create(
-                product_name=sale.product.product_name,
-                price=sale.product.product.sales_price,
-                sales_ref=sale.sales_ref,
-                customer=sale.customer.name,
-                quantity_sold=sale.quantity_sold,
-                total=sale.individual_total,
-                sales_type='Wholesale'
-            )
-
-            procurement = ProcurementList.objects.get(
-                product_name=sale.product.product_name,
-                purchase_ref=sale.sales_ref
-            )
-            if procurement.purchase_ref == sale.sales_ref:
-                procurement.quantity_ordered -= sale.quantity_sold
-                procurement.save()
-
-            product = Products.objects.get(
-                product_name=sale.product.product.product_name)
-            product.quantity_available -= sale.quantity_sold
-            product.save()
-
-            zero_q_procurement = ProcurementList.objects.filter(
-                quantity_ordered=0)
-            if zero_q_procurement:
-                for zero_q in zero_q_procurement:
-                    zero_q.delete()
-            sale.delete()
-
-            transactions = Transactions.objects.filter(
-                total_amount=0,
-                amount_tendered=0,
-                change=0,
-                discount=0,
-                amount_received=0
-            )
-            if transactions:
-                messages.error(
-                    request, "Zero  Transaction Operation was automatically cleaned out. ")
-                for transaction in transactions:
-                    if transaction:
-                        transaction.delete()
-
-        return redirect('super:sales')
-
-    context = {
-        'sales': sales,
-        'get_total_quantity': get_total_quantity,
-        'get_total': get_total,
-        'form': form,
-        'nav_notify': nav_notify,
-        'notification_count': notification_count
-    }
-    return render(request, 'Supermarket/wholesale_pos.html', context)
-
-
-@login_required
 def make_sales_view(request):
     sales = Sales.objects.all()
     nav_notify = SupermarketNotification.objects.all().order_by(
@@ -699,13 +681,15 @@ def make_sales_view(request):
 
         for sale in sales:
             SalesList.objects.create(
+                invoice=sale.invoice,
                 product_name=sale.product.product_name,
                 price=sale.product.product.sales_price,
                 sales_ref=sale.sales_ref,
                 customer=sale.customer.name,
                 quantity_sold=sale.quantity_sold,
                 total=sale.individual_total,
-                sales_type='Retail'
+                sales_type='Retail',
+                payment_status=(not bool(sale.invoice))
             )
 
             procurement = ProcurementList.objects.get(
@@ -713,13 +697,15 @@ def make_sales_view(request):
                 purchase_ref=sale.sales_ref
             )
             if procurement.purchase_ref == sale.sales_ref:
-                procurement.quantity_ordered -= sale.quantity_sold
-                procurement.save()
+                if not bool(sale.invoice):
+                    procurement.quantity_ordered -= sale.quantity_sold
+                    procurement.save()
 
             product = Products.objects.get(
                 product_name=sale.product.product_name)
-            product.quantity_available -= sale.quantity_sold
-            product.save()
+            if not bool(sale.invoice):
+                product.quantity_available -= sale.quantity_sold
+                product.save()
 
             zero_q_procurement = ProcurementList.objects.filter(
                 quantity_ordered=0)
@@ -741,7 +727,8 @@ def make_sales_view(request):
             for transaction in transactions:
                 if transaction:
                     transaction.delete()
-
+        messages.success(
+            request, "Products were sold and has been added to sales list.")
         return redirect('super:sales')
 
     context = {
@@ -756,12 +743,25 @@ def make_sales_view(request):
 
 
 @login_required
+def sales_receipt(request):
+    sales = Sales.objects.all()
+    get_total_quantity = Sales.get_total_quantity()
+
+    get_total = Sales.get_total()
+    return render(request, "Supermarket/sales_receipt.html", context={
+        "sales": sales,
+        "get_total_quantity": get_total_quantity,
+        "get_total": get_total,
+    })
+
+
+@login_required
 def sales_list(request):
     nav_notify = SupermarketNotification.objects.all().order_by(
         '-ordered_date')[:2]
     notification_count = SupermarketNotification.objects.filter(
         is_seen=False).all().count()
-    sales = SalesList.objects.all().order_by('-date')
+    sales = SalesList.objects.all().order_by('-pk')
 
     all_sales_dates = []
     for sale in sales:
@@ -773,9 +773,15 @@ def sales_list(request):
             title = f"Wholesale for {querried_date}"
             queryset = SalesList.objects.filter(
                 sales_type='Wholesale', date=querried_date).all()
+            
+            total_query_sale = 0
+            for sale in queryset:
+                total_query_sale += sales.total
+            
+            # queryset_total = queryset.annotate()
             dir_ = os.path.join(settings.BASE_DIR, 'media')
             html_string = render_to_string(
-                'pdf/Pharmacy/sales_list.html', {'queryset': queryset, 'title': title})
+                'pdf/Pharmacy/sales_list.html', {'queryset': queryset, 'title': title, "total_query_sale": total_query_sale})
             html = HTML(string=html_string)
             html.write_pdf(
                 target=f'{dir_}/tmp/transaction_list.pdf', stylesheets=[CSS(string=boots)])
@@ -795,9 +801,14 @@ def sales_list(request):
             title = f"Retail Sales for {querried_date}"
             queryset = SalesList.objects.filter(
                 sales_type='Retail', date=querried_date).all()
+            
+            total_query_sale = 0
+            for sales in queryset:
+                total_query_sale += sales.total
+
             dir_ = os.path.join(settings.BASE_DIR, 'media')
             html_string = render_to_string(
-                'pdf/Pharmacy/sales_list.html', {'queryset': queryset, 'title': title})
+                'pdf/Pharmacy/sales_list.html', {'queryset': queryset, 'title': title, "total_query_sale": total_query_sale})
             html = HTML(string=html_string)
             html.write_pdf(
                 target=f'{dir_}/tmp/transaction_list.pdf', stylesheets=[CSS(string=boots)])
@@ -817,6 +828,12 @@ def sales_list(request):
     }
     return render(request, 'Supermarket/sales.html', context)
 
+
+def delete_sales_from_list(request, pk):
+    sale = SalesList.objects.get(pk=pk)
+    sale.delete()
+    messages.success(request, "Sale was deleted successfully. ")
+    return redirect('super:sales')
 
 def delete_sales(request, pk):
     sale = Sales.objects.get(pk=pk)
@@ -926,9 +943,15 @@ def procurement_list(request):
         supply_date = request.POST.get('dateToPrintField')
         if supply_date in product_dates_list:
             queryset = ProcurementList.objects.filter(date=supply_date).all()
+
+            total_query_purchase = 0;
+
+            for purchase in queryset:
+                total_query_purchase += purchase.total
+
             dir_ = os.path.join(settings.BASE_DIR, 'media')
             html_string = render_to_string(
-                'pdf/Pharmacy/supply_by_date.html', {'queryset': queryset, 'supply_date': supply_date})
+                'pdf/Pharmacy/supply_by_date.html', {'queryset': queryset, 'supply_date': supply_date, "total_query_purchase": total_query_purchase})
             html = HTML(string=html_string)
             html.write_pdf(
                 target=f'{dir_}/tmp/supply_by_date.pdf', stylesheets=[CSS(string=boots)])
@@ -1066,6 +1089,7 @@ def supplier_edit(request, pk):
     return render(request, 'Supermarket/supplier_edit.html', context)
 
 
+@login_required
 def transaction_list(request):
     nav_notify = SupermarketNotification.objects.all().order_by('-date')[:2]
     notification_count = SupermarketNotification.objects.filter(
@@ -1079,8 +1103,13 @@ def transaction_list(request):
     if request.method == 'POST' and 'transactionPDF' in request.POST:
         title = "All Transactions"
         dir_ = os.path.join(settings.BASE_DIR, 'media')
+
+        total_amount_received = 0
+        for transaction in transactions:
+            total_amount_received += transaction.amount_received
+
         html_string = render_to_string(
-            'pdf/Pharmacy/transaction_pdf.html', {'queryset': transactions, 'title': title})
+            'pdf/Pharmacy/transaction_pdf.html', {'queryset': transactions, 'title': title, "total_amount_received": total_amount_received})
         html = HTML(string=html_string)
         html.write_pdf(target=f'{dir_}/tmp/transactions.pdf',
                        stylesheets=[CSS(string=boots)])
@@ -1096,9 +1125,18 @@ def transaction_list(request):
         if transaction_date in transaction_dates_group:
             title = f"Transactions for {transaction_date}"
             queryset = Transactions.objects.filter(date=transaction_date).all()
+
+            total_amount_received = 0
+            for transaction in queryset:
+                total_amount_received += transaction.amount_received
+
             dir_ = os.path.join(settings.BASE_DIR, 'media')
             html_string = render_to_string(
-                'pdf/Pharmacy/transaction_pdf.html', {'queryset': queryset, 'title': title})
+                'pdf/Pharmacy/transaction_pdf.html', {
+                    'queryset': queryset, 
+                    'title': title, 
+                    "total_amount_received": total_amount_received
+                })
             html = HTML(string=html_string)
             html.write_pdf(
                 target=f'{dir_}/tmp/transactions.pdf', stylesheets=[CSS(string=boots)])
@@ -1165,3 +1203,125 @@ def edit_type_view(request, pk):
     }
 
     return render(request, 'Supermarket/edit_type.html', context)
+
+
+# Invoice views
+@login_required
+def delete_invoice(request, pk):
+    try:
+        invoice = get_object_or_404(Invoice, pk=pk)
+        invoice.delete()
+        messages.success(request, "Invoice was deleted successfully")
+        return redirect('super:invoice-list')
+    except:
+        messages.success(request, "Invoice does not exist.")
+        return redirect('super:invoice-list')
+
+
+@login_required
+def invoice_details(request, pk):
+
+    invoice = Invoice.objects.get(pk=pk)
+    products = invoice.products_in_invoice
+
+    # If the paid button is called,
+    # the invoice payment status and all the product payment status
+    # in the invoice should be set to true
+    if request.method == "POST" and "PayNowButton" in request.POST:
+
+        for product in products:
+            procurement = ProcurementList.objects.get(
+                product_name=product.product_name,
+                purchase_ref=product.sales_ref
+            )
+
+            main_product = Products.objects.get(
+                product_name=product.product_name)
+
+            if procurement.purchase_ref == product.sales_ref:
+                if not product.payment_status:
+                    if product.quantity_sold <= main_product.quantity_available and product.quantity_sold <= procurement.quantity_ordered:
+                        procurement.quantity_ordered -= product.quantity_sold
+                        procurement.save()
+                        main_product.quantity_available -= product.quantity_sold
+                        main_product.save()
+                        product.payment_status = True
+                        product.save()
+                    else:
+                        messages.error(
+                            request, "Not enough products left in stock.")
+                        return redirect('super:invoice-list')
+        invoice.payment_status = True
+        invoice.save()
+        return redirect('super:invoice-list')
+
+    # When user requests for printing pdf document
+    if request.method == "POST" and "PrintBtn" in request.POST:
+        dir_ = os.path.join(settings.BASE_DIR, 'media')
+        html_string = render_to_string(
+            'pdf/Pharmacy/invoice_detail.html', {'invoice': invoice, "products": products})
+        html = HTML(string=html_string)
+        html.write_pdf(target=f'{dir_}/tmp/invoice_detail.pdf',
+                       stylesheets=[CSS(string=boots)])
+
+        fs = FileSystemStorage(location=f'{dir_}/tmp')
+        with fs.open('invoice_detail.pdf') as pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
+            return response
+
+    # When user requests for printing csv document
+    if request.method == "POST" and "ExportBtn" in request.POST:
+        response = HttpResponse(content_type="text/csv")
+        response['Content-Disposition'] = 'attachment; filename="Invoice.csv"'
+        writer = csv.writer(response)
+        writer.writerow(["INVOICE DATA TABLE"])
+        writer.writerow([
+            "PRODUCT NAME",
+            "QTY SOLD",
+            "PRICE",
+            "TOTAL",
+        ])
+        for product in products:
+            writer.writerow([
+                product.product_name,
+                product.quantity_sold,
+                product.price,
+                product.total
+            ])
+
+        return response
+        
+
+    context = {
+        "invoice": invoice,
+        "products": products,
+
+    }
+    return render(request, "Supermarket/invoice_detail.html", context)
+
+
+@login_required
+def invoice_list(request):
+    nav_notify = SupermarketNotification.objects.all().order_by('-date')[:2]
+    notification_count = SupermarketNotification.objects.filter(
+        is_seen=False).all().count()
+    invoices = Invoice.objects.all().order_by("-issue_date")
+
+    form = AddInvoiceForm()
+    if request.method == "POST" and 'invoiceBtn' in request.POST:
+        form = AddInvoiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Invoice was added successfully.")
+            return redirect("super:invoice-list")
+        else:
+            messages.error(request, 'Failed to add Invoice.')
+
+    context = {
+        "invoices": invoices,
+        'nav_notify': nav_notify,
+        'notification_count': notification_count,
+        "form": form
+    }
+    return render(request, "Supermarket/invoice_list.html", context)

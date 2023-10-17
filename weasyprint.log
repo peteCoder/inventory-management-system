@@ -1,0 +1,688 @@
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 52:9, unknown property.
+Ignored `gap: 20px` at 123:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 197:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 48:9, unknown property.
+Ignored `gap: 20px` at 119:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 193:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 52:9, unknown property.
+Ignored `gap: 20px` at 123:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 201:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 52:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 197:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 53:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 194:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 53:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 194:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1002)>
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 192:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 192:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Ignored `align-items: start` at 174:9, invalid value.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 200:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Ignored `align-items: start` at 174:9, invalid value.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 199:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Ignored `align-items: start` at 174:9, invalid value.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 199:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Ignored `align-items: start` at 174:9, invalid value.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 199:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 1rem` at 25:9, unknown property.
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 205:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 1rem` at 25:9, unknown property.
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 205:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 1rem` at 25:9, unknown property.
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 205:7.
+Failed to load stylesheet at https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap : URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+Ignored `gap: 1rem` at 25:9, unknown property.
+Ignored `gap: 0.5em` at 55:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 205:7.
+Ignored `gap: 1rem` at 24:9, unknown property.
+Ignored `gap: 0.5em` at 54:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 204:7.
+Ignored `gap: 1rem` at 24:9, unknown property.
+Ignored `gap: 0.5em` at 54:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 204:7.
+Ignored `gap: 1rem` at 24:9, unknown property.
+Ignored `gap: 0.5em` at 54:9, unknown property.
+Expected a media type, got 'only/**/screen/**/and/**/(max-width: 600px)'
+Invalid media type ' only screen and (max-width: 600px) ' the whole @media rule was ignored at 213:7.
+Ignored `align-items: start` at 82:17, invalid value.
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'informations'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'informations'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Invalid or unsupported selector 'aside:nth-child(:last-child) ', Invalid arguments for :nth-child()
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Anchor defined twice: 'from'
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `src: url(pacifico.ttf)` at 4:7, Relative URI reference without a base URI: 'pacifico.ttf'.
+Missing src descriptor in '@font-face' rule at 2:5
+Ignored `src: url(sourcesanspro-regular.otf)` at 9:7, Relative URI reference without a base URI: 'sourcesanspro-regular.otf'.
+Missing src descriptor in '@font-face' rule at 6:5
+Ignored `src: url(sourcesanspro-bold.otf)` at 14:7, Relative URI reference without a base URI: 'sourcesanspro-bold.otf'.
+Missing src descriptor in '@font-face' rule at 11:5
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 1rem` at 5:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 1rem` at 5:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 1rem` at 5:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 1rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 2rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 2rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 1rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'total'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'total'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'total'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'total'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'total'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'total'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Relative URI reference without a base URI: <link href="invoice.css">
+Ignored `gap: 3rem` at 4:9, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'price'
+Anchor defined twice: 'total'
+Anchor defined twice: 'total'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'
+Ignored `gap: 3rem` at 1:40, unknown property.
+Ignored `gap: 1rem` at 1:40, unknown property.
+Anchor defined twice: 'from'
+Anchor defined twice: 'to'

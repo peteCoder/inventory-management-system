@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Invoice</title>
+    <meta name="description" content="Invoice demo sample" />
+  </head>
+
+  <style>
+    @page {
+      font-family: Pacifico;
+      margin: 3cm;
+      @bottom-left {
+        color: #1ee494;
+        content: "♥ Thank you!";
+      }
+      @bottom-right {
+        color: #a9a;
+        content: "contact@myconpanyname.org | mycomapnyname";
+        font-size: 9pt;
+      }
+    }
+
+    html {
+      color: #14213d;
+      font-family: Source Sans Pro;
+      font-size: 11pt;
+      /* line-height: 1.6; */
+    }
+    body {
+      margin: 0;
+    }
+
+    h1 {
+      color: #1ee494;
+      font-family: Pacifico;
+      font-size: 40pt;
+      margin: 0;
+    }
+
+    aside:last-of-type {
+      margin: 0 0 4em;
+    }
+    aside address {
+      font-style: normal;
+      white-space: pre-line;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+    aside address#from {
+      color: #a9a;
+      /* flex: 1; */
+    }
+    aside address#to {
+      text-align: left;
+    }
+
+    dl {
+      position: absolute;
+      right: 0;
+      text-align: left;
+      top: 0;
+    }
+    dt,
+    dd {
+      display: inline;
+      margin: 0;
+    }
+    dt {
+      color: #a9a;
+    }
+    dt::before {
+      content: "";
+      display: block;
+    }
+    dt::after {
+      content: ":";
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th {
+      border-bottom: 0.2mm solid #a9a;
+      color: #a9a;
+      font-size: 10pt;
+      font-weight: 400;
+      padding-bottom: 0.25cm;
+      text-transform: uppercase;
+    }
+    td {
+      padding-top: 7mm;
+    }
+    td:last-of-type {
+      color: #1ee494;
+      font-weight: bold;
+      text-align: right;
+    }
+    th,
+    td {
+      text-align: center;
+    }
+    th:first-of-type,
+    td:first-of-type {
+      text-align: left;
+    }
+    th:last-of-type,
+    td:last-of-type {
+      text-align: right;
+    }
+    table#total {
+      background: #f6f6f6;
+      border-color: #f6f6f6;
+      border-style: solid;
+      border-width: 2cm 3cm;
+      bottom: 0;
+      font-size: 20pt;
+      margin: 0 -3cm;
+      position: absolute;
+      width: 18cm;
+    }
+  </style>
+
+  <body>
+    <h1>Invoice</h1>
+    <div style="display: flex; flex-direction: column; gap: 3rem">
+      <aside>
+        <address id="from">
+          Address: WeasyPrint 26 rue Emile Decorps 69100 Villeurbanne France
+        </address>
+
+        <address id="to">Phone: +234903838388</address>
+      </aside>
+
+      <aside style="margin-top: 3rem">
+        <address id="from">Customer: {{invoice.customer.name}}</address>
+
+        <address id="to">Phone: {{invoice.customer.phone}}</address>
+      </aside>
+    </div>
+
+    <div style="margin-bottom: 2rem; color: black">
+      <address style="display: flex; flex-direction: column; gap: 1rem">
+        <span>Account. Number: 3029392993</span>
+        <span>Account Name: Ovbioise Pharmaceuticals</span>
+        <span>Bank: UBA</span>
+      </address>
+    </div>
+
+    <dl id="informations">
+      <dt>Invoice number</dt>
+      <dd>{{invoice.invoice_number}}</dd>
+      <dt>Date</dt>
+      <dd>{{invoice.issue_date}}</dd>
+    </dl>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+        <tr>
+          <td>{{product.product_name}}</td>
+          <td>&#8358;{{product.price}}</td>
+          <td>{{product.quantity_sold}}</td>
+          <td>&#8358;{{product.total}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <table id="total">
+      <thead>
+        <tr>
+          <th>Due by</th>
+          <th>Total due</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{invoice.due_date}}</td>
+          <td>&#8358;{{invoice.derived_total_amount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
