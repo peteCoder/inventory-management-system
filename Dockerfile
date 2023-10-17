@@ -1,30 +1,31 @@
-# Using `python:3.11.1` from Dockerhub.
-FROM python:3.11.1
+# Use a specific version of Python from Docker Hub
+# Use environment variables for version management
+ARG PYTHON_VERSION=3.11.1
+FROM python:${PYTHON_VERSION}
 
-WORKDIR /app
-
+# Set environment variables to ensure Python runs in a reproducible manner
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
-# EXPOSE 8080
 
-# Set up an app directory for your code
+# Set the working directory for your application
+WORKDIR /app
+
+# Copy the application code into the container
 COPY . /app
 
-# Install system dependencies
+# Install system dependencies (make sure these are compatible with the Python version)
 RUN apt-get update && apt-get install -y \
     libpango1.0-0 \
     libcairo2 \
     libffi6
 
+# Upgrade pip and install Python packages from requirements.txt
 RUN pip install --upgrade pip
-# Install `pip` and needed Python packages from `requirements.txt`
 COPY ./requirements.txt /app/
-
-
 RUN pip install -r requirements.txt
 
-# Define an entrypoint which will run the main app using the Gunicorn WSGI server.
-ENTRYPOINT ["gunicorn", "-b", ":8080", "main:APP"]
+# Expose the port on which your application will run (if needed)
+# EXPOSE 8080
 
-
-
+# Define an entrypoint to run your Django application with Gunicorn
+CMD ["gunicorn", "-b", ":8080", "main:APP"]
