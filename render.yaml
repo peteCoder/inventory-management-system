@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ovbioise
+    runtime: docker
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn ovbioise.wsgi:application"
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
